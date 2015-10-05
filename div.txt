@@ -1,35 +1,42 @@
-    //Declaration of variables, working registers
-    mov R0, #0        //Result of R5%R4 start with Numerator
-    mov R1, #0        //Result of R5/R4 start with 0
-    mov R2, #1        //Increment value start with 1
-    mov R3, #0        //Decrement value start with Denominator
-    //Declaration of variables holding inputs
-    mov R4, #6      //Denominator
-    mov R5, #55    //Numerator
-    //Initialize the working registers with the data
-    /*R0=R5;R1=0;R2=1;R3=R4*/
-	mov R0, R5
-	mov 
-    //Shift the denominator left until greater than numerator, then shift back
-    do{
-        R3<<=1;             //Denominator shift left
-        R2<<=1;             //Division shift left
-    }while(R0>R3);          //Shift Left until Decrement/Division Greater than Numerator
-    R3>>=1;                 //Shift Denominator right
-    R2>>=1;                 //Shift Division right
-    //Loop and keep subtracting off the shifted Denominator
-    while(R0>=R3){          //Keep Looping until the division is complete
-        R1+=R2;             //Increment division by the increment
-        R0-=R3;             //Subtract shifted Denominator with remainder of Numerator
-        //Shift right until denominator is less than numerator
-        while(R2>1&&R3>R0){ //Shift Denominator until less than Numerator
-            R2>>=1;         //Shift Increment left
-            R3>>=1;         //Shift Denominator left
-        }
-    }
-    //Output the results
-    cout<<R5<<"/"<<R4<<"="<<R1<<endl;
-    cout<<R5<<"%"<<R4<<"="<<R0<<endl;
-    //Exit Stage Right
-    return 0;
+int main(int argc, char** argv) {
+    @Declaration of variables, working registers
+    mov R0, #0        @Result of R5%R4 start with Numerator
+    mov R1, #0        @Result of R5/R4 start with 0
+    mov R2, #1        @Increment value start with 1
+    mov R3, #0        @Decrement value start with Denominator
+    @Declaration of variables holding inputs
+    mov R4, #10      @Denominator
+    mov R5, #21    @Numerator
+    @Initialize the working registers with the data
+    mov R0, R5
+	mov R3, R4
+    @Shift the denominator left until greater than numerator, then shift back
+    _shift_left:
+        LSL R3, #1             @Denominator shift left
+        LSL R2, #1             @Division shift left
+    CMP R0,R3
+	BGT_shift_left @Shift Left until Decrement/Division Greater than Numerator
+		LSR R3, #1                 @Shift Denominator right
+		LSR R2, #1                 @Shift Division right
+    @Loop and keep subtracting off the shifted Denominator
+    _subtract:
+	CMP R0,R3
+    BLT_output
+        ADD R1, R2, R1             @Increment division by the increment
+        SUB R0, R3, R0             @Subtract shifted Denominator with remainder of Numerator
+        @Shift right until denominator is less than numerator
+        _shift_right:
+		CMP R2, #1
+		BEQ_subtract
+		CMP R3, R0
+		BLE_subtract
+            LSL R2, #1         @Shift Increment left
+            LSL R3, #1         @Shift Denominator left
+        goto _shift_right  @Shift Denominator until less than Numerator
+    got _subtract      @Keep Looping until the division is complete
+    @Output the results
+    _output:
+	mov R7, #1
+	SWI 0
+    @Exit Stage Right
 }
