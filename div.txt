@@ -32,8 +32,8 @@ int main(int argc, char** argv) {
 		BLE_subtract
             LSL R2, #1         @Shift Increment left
             LSL R3, #1         @Shift Denominator left
-        goto _shift_right  @Shift Denominator until less than Numerator
-    got _subtract      @Keep Looping until the division is complete
+        BAL_shift_right  @Shift Denominator until less than Numerator
+    BAL_subtract      @Keep Looping until the division is complete
     @Output the results
     _output:
 	mov R7, #1
