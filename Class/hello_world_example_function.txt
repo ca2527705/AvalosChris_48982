@@ -13,7 +13,7 @@ main:
 ldr r1, address_of_return /*r1<-&address_of_return */
 str lr, [r1]	/* *r1<-lr*/
 
-ldr r0,address_of_greeting /8r0<-&address_of_freetingm*/
+ldr r0,address_of_greeting /*r0<-&address_of_freetingm*/
 	/*first parameter of puts*/
 
 bl puts	

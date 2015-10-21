@@ -2,7 +2,7 @@
 .data
 
 /*first message */
-balign 4
+.balign 4
 message1:.asciz "hey, type a number: "
 
 /*second message*/
@@ -39,7 +39,7 @@ ldr r1,address_of_number_read /*r1<-&number_read*/
 ldr r1,[r1]	/*r1<-*r1*/
 bl printf	/*Call to printf*/
 
-ldr r0,address_of_number_read ?r0<-&number_read*/
+ldr r0,address_of_number_read /*r0<-&number_read*/
 ldr r0, [r0]	/*r0<--*r0*/
 
 ldr lr, address_of_return	/*lr<-&address_of_return*/
