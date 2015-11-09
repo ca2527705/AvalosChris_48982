@@ -1,0 +1,10 @@
+/* Perform R0=R1+R2		*/
+
+	.global	_start
+_start:
+	MOV R1, #50	@ GET 50 INTO R1
+	MOV R2, #60	@ GET 60 INTO R2
+	ADDS R0, R1, R2 @ ADD THE WO, RESULT IN R0
+
+	MOV R7, #1	@EXI THROUGH SYSCALL
+	SWI 0

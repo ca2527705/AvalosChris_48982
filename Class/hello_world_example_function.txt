@@ -1,0 +1,28 @@
+/*--hello01.s*/
+.data
+greeting:
+.asciz"Hello World"
+
+.balign4
+return:.word0
+
+.test
+
+.global main
+main:
+ldr r1, address_of_return /*r1<-&address_of_return */
+str lr, [r1]	/* *r1<-lr*/
+
+ldr r0,address_of_greeting /*r0<-&address_of_freetingm*/
+	/*first parameter of puts*/
+
+bl puts	
+
+ldr r1, address_of_return /*r1<-&address_of_return */
+ldr lr, [r1]	/*lr<-*r1*/
+bx lr	/*return from main */
+address_of_greeting:.word greeting
+address_of_return:.word return 
+
+/*external*/
+.global puts
