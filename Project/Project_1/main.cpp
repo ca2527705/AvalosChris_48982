@@ -23,9 +23,14 @@ int main(int argc, char** argv) {
     //to be used later, so they can use 1s and 2s for answers
     int answer;
     int roll;
+    //INtroduction statment explaining the rules of the game
     cout<<"This is the game of craps! Try to roll the same number twice\n"
             "before you roll a 7, or roll a 7 or eleven on your first roll\n"
-            "to win instantly!\n";
+            "to win instantly!\n"
+            "If on your second roll, you roll a seven at anytime, then you lose "
+            "automatically!\n"
+            "Enter 1 to begin and roll, enter any other number to exit at "
+            "any time\n";
     do{
     //These are the different dice roll and their combinations
     int roll1,roll2,roll3,roll4,roll5;
@@ -48,14 +53,14 @@ int main(int argc, char** argv) {
     //of continuing to roll until they roll a 7 or 2
     else
             do{ 
-                //the second dice roll
+                //the second dice rolls
                 roll3=(rand()%6)+1;
                 roll4=(rand()%6)+1;    
                 cout<<"Second Roll!"<<endl;
                 roll5=roll3+roll4;
                 cout<<"A "<<roll3<<" and a "<<roll4<<" was rolled\n";
                 cout<<"You rolled a "<<roll5<<endl;
-                //reshow the number needed in case they roll alot
+                //re-show the number needed in case they roll alot
                 cout<<"You need a  "<<roll<<endl;
                 //if the numbers are equal, game ends
                 if(roll5==roll){
@@ -76,6 +81,7 @@ int main(int argc, char** argv) {
                 cout<<"Enter 1 for yes"<<endl;
                 cin>>answer;
     }while(answer==1);
+    cout<<"Good-bye!"<<endl;
 
     return 0;
 }
