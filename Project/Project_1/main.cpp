@@ -2,7 +2,6 @@
  * File:   main.cpp
  * Author: Christopher Avalos
  * Purpose: C version of assembly project
- * Created on October 26, 2015, 11:48 AM
  */
 //System Libraires
 #include <cstdlib>
@@ -35,10 +34,10 @@ int main(int argc, char** argv) {
             "before you roll a 7, or roll a 7 or eleven on your first roll\n"
             "to win instantly!\n"
             "If on your second roll, you roll a seven at anytime, then you lose "
-            "automatically!\n"<<endl;
+            "automatically!\n";
     do{        
-    cout<<"Enter 1 to begin and roll, enter 2 to see what your chances"
-            "are, or enter any other number to exit at "
+    cout<<"Enter 1 to begin and roll, enter 2 to see what your chances "
+            "are,\nor enter any other number to exit at "
             "any time\n"<<endl;
     cin>>answer;
     switch(answer){
@@ -89,7 +88,7 @@ int main(int argc, char** argv) {
                         //ask them if they want to play again
                         }while((answer==1)&&(roll5!=7)&&(roll5!=roll));
                         cout<<"Play again?\n";
-                        cout<<"Enter 1 for yes, any other number to exit"<<endl;
+                        cout<<"Enter 1 for yes, any other number to return menu"<<endl;
                         cin>>answer;
             }while(answer==1);
             break;
