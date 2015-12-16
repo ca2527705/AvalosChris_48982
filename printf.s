@@ -7,7 +7,7 @@ message1:.asciz " This is the game of craps! Try to roll the same number twice\n
 
 /*second message*/
 .balign 4
-message2:.asciz "Enter a number: "
+message2:.asciz "Enter 1 to play, 2 to see your odds, and 3 to exit.\nEnter a number: "
 
 .balign 4
 message3:.asciz "First dice roll! Lets get started!\n "
@@ -65,6 +65,8 @@ bl start
 cmp r0, #7
 beq winner
 bne lose
+
+chances:
 
 lose:
 ldr r0,address_of_message6
